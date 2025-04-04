@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -209,7 +208,7 @@
 
   <footer>
     &copy; 2025 T Ruchitha. All rights reserved.
-    <p id="visitor-count">Visitors: Loading...</p>
+    <p>Thanks for visiting!</p>
   </footer>
 
   <script>
@@ -223,12 +222,6 @@
     document.addEventListener("DOMContentLoaded", () => {
       const btn = document.querySelector(".toggle-btn");
       btn.textContent = document.body.classList.contains("dark") ? "🌙" : "☀️";
-
-      fetch('https://api.countapi.xyz/hit/ruchitha-portfolio/visits')
-        .then(res => res.json())
-        .then(data => {
-          document.getElementById('visitor-count').textContent = "Visitors: " + data.value;
-        });
     });
 
     const observer = new IntersectionObserver((entries) => {
