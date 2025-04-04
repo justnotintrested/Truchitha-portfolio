@@ -13,7 +13,6 @@
       --header-light: linear-gradient(135deg, #d0e8ff, #f1f9ff);
       --header-dark: linear-gradient(135deg, #121c2a, #1c1f2a);
     }
-
     body {
       margin: 0;
       font-family: 'Roboto Mono', monospace;
@@ -24,18 +23,15 @@
       transition: all 0.3s ease;
       overflow-x: hidden;
     }
-
     body.dark {
       background: linear-gradient(-45deg, #0d1117, #1c1c2f, #121820, #0d1117);
       color: var(--text-dark);
     }
-
     @keyframes gradientBG {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-
     .toggle-btn {
       position: fixed;
       top: 1rem;
@@ -48,7 +44,6 @@
       cursor: pointer;
       z-index: 1000;
     }
-
     header {
       text-align: center;
       padding: 2rem;
@@ -57,20 +52,16 @@
       z-index: 2;
       position: relative;
     }
-
     body.dark header {
       background: var(--header-dark);
     }
-
     header h1 {
       margin: 0;
       font-size: 2.2rem;
     }
-
     header p {
       margin-top: 0.5rem;
     }
-
     section {
       padding: 2rem;
       max-width: 800px;
@@ -81,42 +72,34 @@
       position: relative;
       z-index: 1;
     }
-
     section.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
     h2 {
       color: #4682b4;
       border-bottom: 2px solid #87cefa;
       padding-bottom: 0.3rem;
     }
-
     ul {
       padding-left: 1.5rem;
     }
-
     footer {
       text-align: center;
       padding: 1rem;
       font-size: 0.9rem;
       background: #f0f0f0;
     }
-
     body.dark footer {
       background: #111;
     }
-
     a {
       color: #007acc;
     }
-
     .download {
       text-align: center;
       margin-top: 1rem;
     }
-
     .download a {
       padding: 0.5rem 1rem;
       background-color: #87cefa;
@@ -124,50 +107,10 @@
       border-radius: 6px;
       text-decoration: none;
     }
-
-    .floating-icon {
-      position: fixed;
-      z-index: 0;
-      font-size: 1.5rem;
-      opacity: 0.4;
-      pointer-events: auto;
-      user-select: none;
-    }
-
-    .floating-icon:hover {
-      transform: scale(1.3);
-      opacity: 0.8;
-      transition: 0.3s;
-    }
-
-    .floating-rare {
-      font-size: 1.8rem;
-    }
-
-    .floating-golden {
-      color: gold;
-      font-size: 2rem;
-      opacity: 0.8;
-    }
-
-    #takshadiMessage {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: gold;
-      color: black;
-      padding: 0.6rem 1rem;
-      border-radius: 8px;
-      font-weight: bold;
-      z-index: 999;
-    }
   </style>
 </head>
 <body>
   <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
-  <div id="takshadiMessage">✨ Takshadi ✨</div>
 
   <header>
     <h1>T Ruchitha</h1>
@@ -238,7 +181,6 @@
     function toggleDarkMode() {
       document.body.classList.toggle("dark");
     }
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -249,62 +191,6 @@
     document.querySelectorAll('section').forEach(section => {
       observer.observe(section);
     });
-
-    const directions = [
-      { x: 1, y: -1 }, { x: -1, y: 1 },
-      { x: 1, y: 1 }, { x: -1, y: -1 },
-      { x: 0, y: -1 }, { x: 0, y: 1 }
-    ];
-
-    function createFloatingIcon(char, classes = []) {
-      const icon = document.createElement('span');
-      icon.classList.add('floating-icon', ...classes);
-      icon.textContent = char;
-
-      const dir = directions[Math.floor(Math.random() * directions.length)];
-      const speed = (Math.random() * 20 + 20).toFixed(1);
-      const delay = (Math.random() * 5).toFixed(1);
-
-      const key = `float-${Math.random().toString(36).substr(2, 5)}`;
-      const style = document.createElement('style');
-      style.textContent = `
-        @keyframes ${key} {
-          from { transform: translate(0, 0); }
-          to { transform: translate(${dir.x * 100}vw, ${dir.y * 100}vh); }
-        }
-      `;
-      document.head.appendChild(style);
-
-      icon.style.left = `${Math.random() * 100}vw`;
-      icon.style.top = `${Math.random() * 100}vh`;
-      icon.style.animation = `${key} ${speed}s linear infinite`;
-      icon.style.animationDelay = `${delay}s`;
-
-      return icon;
-    }
-
-    const body = document.body;
-    const icons = ['🩺', '❤️', '💊', '🧪', '🧬', '✚', '🫀'];
-    const rares = ['🍫', '🍗'];
-    const golden = '⭐';
-
-    for (let i = 0; i < 25; i++) {
-      body.appendChild(createFloatingIcon(icons[Math.floor(Math.random() * icons.length)]));
-    }
-
-    for (let i = 0; i < 3; i++) {
-      body.appendChild(createFloatingIcon(rares[Math.floor(Math.random() * rares.length)], ['floating-rare']));
-    }
-
-    if (Math.random() < 0.1) {
-      const goldIcon = createFloatingIcon(golden, ['floating-golden']);
-      goldIcon.onclick = () => {
-        const msg = document.getElementById("takshadiMessage");
-        msg.style.display = "block";
-        setTimeout(() => msg.style.display = "none", 3000);
-      };
-      body.appendChild(goldIcon);
-    }
   </script>
 </body>
 </html>
