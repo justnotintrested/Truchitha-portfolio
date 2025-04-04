@@ -7,8 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --light-bg: linear-gradient(-45deg, #e9f3fb, #d0e8ff, #f1f9ff, #ffffff);
-      --dark-bg: linear-gradient(-45deg, #0d1117, #1c1c2f, #121820, #0d1117);
       --text-light: #222;
       --text-dark: #eee;
       --accent: #87cefa;
@@ -19,15 +17,16 @@
     body {
       margin: 0;
       font-family: 'Roboto Mono', monospace;
-      background: var(--light-bg);
+      background: linear-gradient(-45deg, #e9f3fb, #d0e8ff, #f1f9ff, #ffffff);
       background-size: 400% 400%;
       animation: gradientBG 15s ease infinite;
       color: var(--text-light);
       transition: all 0.3s ease;
+      overflow-x: hidden;
     }
 
     body.dark {
-      background: var(--dark-bg);
+      background: linear-gradient(-45deg, #0d1117, #1c1c2f, #121820, #0d1117);
       color: var(--text-dark);
     }
 
@@ -55,6 +54,8 @@
       padding: 2rem;
       background: var(--header-light);
       transition: background 0.3s ease;
+      z-index: 2;
+      position: relative;
     }
 
     body.dark header {
@@ -77,6 +78,8 @@
       opacity: 0;
       transform: translateY(30px);
       transition: all 0.6s ease;
+      position: relative;
+      z-index: 1;
     }
 
     section.visible {
@@ -121,10 +124,63 @@
       border-radius: 6px;
       text-decoration: none;
     }
+
+    /* Floating Icons */
+    .floating-icon {
+      position: fixed;
+      z-index: 0;
+      font-size: 1.5rem;
+      opacity: 0.4;
+      animation: float 20s linear infinite;
+      pointer-events: auto;
+      user-select: none;
+    }
+
+    .floating-icon:hover {
+      transform: scale(1.3);
+      opacity: 0.8;
+      transition: 0.3s;
+    }
+
+    .floating-rare {
+      animation-duration: 60s;
+      font-size: 1.8rem;
+    }
+
+    .floating-golden {
+      color: gold;
+      font-size: 2rem;
+      opacity: 0.7;
+      animation-duration: 90s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) translateX(0);
+      }
+      100% {
+        transform: translateY(-120vh) translateX(30vw);
+      }
+    }
+
+    #takshadiMessage {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: gold;
+      color: black;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      font-weight: bold;
+      z-index: 999;
+    }
   </style>
 </head>
 <body>
   <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+  <div id="takshadiMessage">✨ Takshadi ✨</div>
 
   <header>
     <h1>T Ruchitha</h1>
@@ -191,6 +247,49 @@
   <footer>
     &copy; 2025 T Ruchitha. All rights reserved.
   </footer>
+
+  <!-- Floating icons -->
+  <script>
+    const icons = ['🩺','❤️','💊','🧪','🧬','✚','🫀'];
+    const rares = ['🍫','🍗'];
+    const golden = '⭐';
+    const body = document.body;
+
+    for (let i = 0; i < 25; i++) {
+      const span = document.createElement('span');
+      span.classList.add('floating-icon');
+      span.style.left = `${Math.random() * 100}vw`;
+      span.style.top = `${Math.random() * 100}vh`;
+      span.textContent = icons[Math.floor(Math.random() * icons.length)];
+      span.style.animationDelay = `${Math.random() * 10}s`;
+      body.appendChild(span);
+    }
+
+    for (let i = 0; i < 3; i++) {
+      const rare = document.createElement('span');
+      rare.classList.add('floating-icon', 'floating-rare');
+      rare.style.left = `${Math.random() * 100}vw`;
+      rare.style.top = `${Math.random() * 100}vh`;
+      rare.textContent = rares[Math.floor(Math.random() * rares.length)];
+      rare.style.animationDelay = `${Math.random() * 20}s`;
+      body.appendChild(rare);
+    }
+
+    const lucky = Math.random();
+    if (lucky < 0.1) {
+      const gold = document.createElement('span');
+      gold.classList.add('floating-icon', 'floating-golden');
+      gold.style.left = `${Math.random() * 100}vw`;
+      gold.style.top = `${Math.random() * 100}vh`;
+      gold.textContent = golden;
+      gold.onclick = () => {
+        const msg = document.getElementById("takshadiMessage");
+        msg.style.display = "block";
+        setTimeout(() => msg.style.display = "none", 3000);
+      };
+      body.appendChild(gold);
+    }
+  </script>
 
   <script>
     function toggleDarkMode() {
