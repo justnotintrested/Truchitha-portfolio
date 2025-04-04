@@ -125,13 +125,11 @@
       text-decoration: none;
     }
 
-    /* Floating Icons */
     .floating-icon {
       position: fixed;
       z-index: 0;
       font-size: 1.5rem;
       opacity: 0.4;
-      animation: float 20s linear infinite;
       pointer-events: auto;
       user-select: none;
     }
@@ -143,24 +141,13 @@
     }
 
     .floating-rare {
-      animation-duration: 60s;
       font-size: 1.8rem;
     }
 
     .floating-golden {
       color: gold;
       font-size: 2rem;
-      opacity: 0.7;
-      animation-duration: 90s;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(100vh) translateX(0);
-      }
-      100% {
-        transform: translateY(-120vh) translateX(30vw);
-      }
+      opacity: 0.8;
     }
 
     #takshadiMessage {
@@ -224,7 +211,6 @@
       <li>Scientific Writing (2024)</li>
       <li>Languages: English, Hindi, Telugu, Kannada</li>
     </ul>
-
     <h3>Machines Handled</h3>
     <ul>
       <li>Babylog, Savina 300, Carescape R860, Evita v300</li>
@@ -248,49 +234,6 @@
     &copy; 2025 T Ruchitha. All rights reserved.
   </footer>
 
-  <!-- Floating icons -->
-  <script>
-    const icons = ['🩺','❤️','💊','🧪','🧬','✚','🫀'];
-    const rares = ['🍫','🍗'];
-    const golden = '⭐';
-    const body = document.body;
-
-    for (let i = 0; i < 25; i++) {
-      const span = document.createElement('span');
-      span.classList.add('floating-icon');
-      span.style.left = `${Math.random() * 100}vw`;
-      span.style.top = `${Math.random() * 100}vh`;
-      span.textContent = icons[Math.floor(Math.random() * icons.length)];
-      span.style.animationDelay = `${Math.random() * 10}s`;
-      body.appendChild(span);
-    }
-
-    for (let i = 0; i < 3; i++) {
-      const rare = document.createElement('span');
-      rare.classList.add('floating-icon', 'floating-rare');
-      rare.style.left = `${Math.random() * 100}vw`;
-      rare.style.top = `${Math.random() * 100}vh`;
-      rare.textContent = rares[Math.floor(Math.random() * rares.length)];
-      rare.style.animationDelay = `${Math.random() * 20}s`;
-      body.appendChild(rare);
-    }
-
-    const lucky = Math.random();
-    if (lucky < 0.1) {
-      const gold = document.createElement('span');
-      gold.classList.add('floating-icon', 'floating-golden');
-      gold.style.left = `${Math.random() * 100}vw`;
-      gold.style.top = `${Math.random() * 100}vh`;
-      gold.textContent = golden;
-      gold.onclick = () => {
-        const msg = document.getElementById("takshadiMessage");
-        msg.style.display = "block";
-        setTimeout(() => msg.style.display = "none", 3000);
-      };
-      body.appendChild(gold);
-    }
-  </script>
-
   <script>
     function toggleDarkMode() {
       document.body.classList.toggle("dark");
@@ -303,10 +246,65 @@
         }
       });
     });
-
     document.querySelectorAll('section').forEach(section => {
       observer.observe(section);
     });
+
+    const directions = [
+      { x: 1, y: -1 }, { x: -1, y: 1 },
+      { x: 1, y: 1 }, { x: -1, y: -1 },
+      { x: 0, y: -1 }, { x: 0, y: 1 }
+    ];
+
+    function createFloatingIcon(char, classes = []) {
+      const icon = document.createElement('span');
+      icon.classList.add('floating-icon', ...classes);
+      icon.textContent = char;
+
+      const dir = directions[Math.floor(Math.random() * directions.length)];
+      const speed = (Math.random() * 20 + 20).toFixed(1);
+      const delay = (Math.random() * 5).toFixed(1);
+
+      const key = `float-${Math.random().toString(36).substr(2, 5)}`;
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes ${key} {
+          from { transform: translate(0, 0); }
+          to { transform: translate(${dir.x * 100}vw, ${dir.y * 100}vh); }
+        }
+      `;
+      document.head.appendChild(style);
+
+      icon.style.left = `${Math.random() * 100}vw`;
+      icon.style.top = `${Math.random() * 100}vh`;
+      icon.style.animation = `${key} ${speed}s linear infinite`;
+      icon.style.animationDelay = `${delay}s`;
+
+      return icon;
+    }
+
+    const body = document.body;
+    const icons = ['🩺', '❤️', '💊', '🧪', '🧬', '✚', '🫀'];
+    const rares = ['🍫', '🍗'];
+    const golden = '⭐';
+
+    for (let i = 0; i < 25; i++) {
+      body.appendChild(createFloatingIcon(icons[Math.floor(Math.random() * icons.length)]));
+    }
+
+    for (let i = 0; i < 3; i++) {
+      body.appendChild(createFloatingIcon(rares[Math.floor(Math.random() * rares.length)], ['floating-rare']));
+    }
+
+    if (Math.random() < 0.1) {
+      const goldIcon = createFloatingIcon(golden, ['floating-golden']);
+      goldIcon.onclick = () => {
+        const msg = document.getElementById("takshadiMessage");
+        msg.style.display = "block";
+        setTimeout(() => msg.style.display = "none", 3000);
+      };
+      body.appendChild(goldIcon);
+    }
   </script>
 </body>
 </html>
