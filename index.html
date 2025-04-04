@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>T Ruchitha – Digital Resume</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
   <style>
     :root {
       --light-bg: #e9f3fb;
@@ -25,6 +26,14 @@
     body.dark {
       background: var(--dark-bg);
       color: var(--text-dark);
+    }
+    #tsparticles {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      z-index: -1;
     }
     .toggle-btn {
       position: fixed;
@@ -100,12 +109,13 @@
   </style>
 </head>
 <body>
+  <div id="tsparticles"></div>
   <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
   <header>
     <h1>T Ruchitha</h1>
     <p>PGDM Student | Respiratory Care Therapist | Health Systems Enthusiast</p>
     <p>Bangalore | <a href="mailto:truchitha714@gmail.com">truchitha714@gmail.com</a></p>
-    <p><a href="https://www.linkedin.com/in/ruchitha-t-616a03321/">LinkedIn</a></p>
+    <p><a href="https://www.linkedin.com/in/ruchitha-t-616a03321">LinkedIn</a></p>
   </header>
 
   <section>
@@ -182,6 +192,24 @@
 
     document.querySelectorAll('section').forEach(section => {
       observer.observe(section);
+    });
+
+    tsParticles.load("tsparticles", {
+      background: { color: "transparent" },
+      fullScreen: { enable: false },
+      particles: {
+        number: { value: 40 },
+        color: { value: ["#aad4ff", "#bae1ff"] },
+        size: { value: 3 },
+        move: { enable: true, speed: 0.6 },
+        opacity: { value: 0.3 },
+        shape: { type: "circle" }
+      },
+      interactivity: {
+        events: { onHover: { enable: true, mode: "repulse" } },
+        modes: { repulse: { distance: 50 } }
+      },
+      detectRetina: true
     });
   </script>
 </body>
