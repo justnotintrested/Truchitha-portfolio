@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>T Ruchitha – Digital Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --light-bg: #e9f3fb;
+      --dark-bg: #0d1117;
+      --text-light: #222;
+      --text-dark: #eee;
+      --accent: #87cefa;
+    }
+    body {
+      margin: 0;
+      font-family: 'Roboto Mono', monospace;
+      background: var(--light-bg);
+      color: var(--text-light);
+      transition: all 0.3s ease;
+    }
+    body.dark {
+      background: var(--dark-bg);
+      color: var(--text-dark);
+    }
+    .toggle-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    header {
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, #d0e8ff, #f1f9ff);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+    header p {
+      margin-top: 0.5rem;
+    }
+    section {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    h2 {
+      color: #4682b4;
+      border-bottom: 2px solid #87cefa;
+      padding-bottom: 0.3rem;
+    }
+    ul {
+      padding-left: 1.5rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      background: #f0f0f0;
+    }
+    a {
+      color: #007acc;
+    }
+    .download {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .download a {
+      padding: 0.5rem 1rem;
+      background-color: #87cefa;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+  <header>
+    <h1>T Ruchitha</h1>
+    <p>PGDM Student | Respiratory Care Therapist | Health Systems Enthusiast</p>
+    <p>Bangalore | <a href="mailto:truchitha714@gmail.com">truchitha714@gmail.com</a></p>
+    <p><a href="https://www.linkedin.com/in/ruchitha-t-616a0332">LinkedIn</a></p>
+  </header>
+
+  <section>
+    <h2>About Me</h2>
+    <p>Enthusiastic professional passionate about streamlining healthcare operations and driving clinical efficiency. Currently pursuing PGDM at IIHMR, Bangalore.</p>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <ul>
+      <li><strong>PGDM – IIHMR, Bangalore</strong> (2024–2026)</li>
+      <li><strong>B.Sc. in Respiratory Care Therapy – Jayadeva Institute</strong> (2019–2024) – 78%</li>
+      <li><strong>12th Grade – JNV</strong> (2019) – 88.7%</li>
+      <li><strong>10th Grade – JNV</strong> (2017) – CGPA 9.6</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    <p><strong>Intern – Karnataka Health Systems Resource Centre (KHSRC), 2024</strong></p>
+    <ul>
+      <li>Field visits, data collection, and analysis for CHO impact study</li>
+    </ul>
+    <p><strong>Intern – Respiratory Care Therapist, Jayadeva Institute</strong></p>
+    <ul>
+      <li>Provided care in ICUs, documented progress, optimized clinical workflows</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Skills & Certifications</h2>
+    <ul>
+      <li>Analytical thinking, process optimization</li>
+      <li>Power BI, Tableau, Excel, PowerPoint</li>
+      <li>Scientific Writing (2024)</li>
+      <li>Languages: English, Hindi, Telugu, Kannada</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Activities</h2>
+    <ul>
+      <li>Member – Sports Committee & Management Club (IIHMR)</li>
+      <li>Participant – RESCARE 2022 & 2023 Conferences</li>
+    </ul>
+  </section>
+
+  <section class="download">
+    <a href="T%20RUCHITHA-IIHMR-903.pdf" download>Download My Resume (PDF)</a>
+  </section>
+
+  <footer>
+    &copy; 2025 T Ruchitha. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+    }
+  </script>
+</body>
+</html>
