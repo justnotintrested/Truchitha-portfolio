@@ -13,6 +13,7 @@
       --header-light: linear-gradient(135deg, #d0e8ff, #f1f9ff);
       --header-dark: linear-gradient(135deg, #121c2a, #1c1f2a);
     }
+
     body {
       margin: 0;
       font-family: 'Roboto Mono', monospace;
@@ -23,15 +24,18 @@
       transition: all 0.3s ease;
       overflow-x: hidden;
     }
+
     body.dark {
       background: linear-gradient(-45deg, #0d1117, #1c1c2f, #121820, #0d1117);
       color: var(--text-dark);
     }
+
     @keyframes gradientBG {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+
     .toggle-btn {
       position: fixed;
       top: 1rem;
@@ -44,6 +48,16 @@
       cursor: pointer;
       z-index: 1000;
     }
+
+    @media (max-width: 600px) {
+      .toggle-btn {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.8rem;
+        top: 0.7rem;
+        right: 0.7rem;
+      }
+    }
+
     header {
       text-align: center;
       padding: 2rem;
@@ -52,16 +66,20 @@
       z-index: 2;
       position: relative;
     }
+
     body.dark header {
       background: var(--header-dark);
     }
+
     header h1 {
       margin: 0;
       font-size: 2.2rem;
     }
+
     header p {
       margin-top: 0.5rem;
     }
+
     section {
       padding: 2rem;
       max-width: 800px;
@@ -72,34 +90,42 @@
       position: relative;
       z-index: 1;
     }
+
     section.visible {
       opacity: 1;
       transform: translateY(0);
     }
+
     h2 {
       color: #4682b4;
       border-bottom: 2px solid #87cefa;
       padding-bottom: 0.3rem;
     }
+
     ul {
       padding-left: 1.5rem;
     }
+
     footer {
       text-align: center;
       padding: 1rem;
       font-size: 0.9rem;
       background: #f0f0f0;
     }
+
     body.dark footer {
       background: #111;
     }
+
     a {
       color: #007acc;
     }
+
     .download {
       text-align: center;
       margin-top: 1rem;
     }
+
     .download a {
       padding: 0.5rem 1rem;
       background-color: #87cefa;
@@ -181,6 +207,7 @@
     function toggleDarkMode() {
       document.body.classList.toggle("dark");
     }
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -188,6 +215,7 @@
         }
       });
     });
+
     document.querySelectorAll('section').forEach(section => {
       observer.observe(section);
     });
