@@ -29,11 +29,11 @@
     }
     #tsparticles {
       position: fixed;
-      width: 100vw;
-      height: 100vh;
       top: 0;
       left: 0;
       z-index: -1;
+      width: 100%;
+      height: 100%;
     }
     .toggle-btn {
       position: fixed;
@@ -111,11 +111,12 @@
 <body>
   <div id="tsparticles"></div>
   <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
   <header>
     <h1>T Ruchitha</h1>
     <p>PGDM Student | Respiratory Care Therapist | Health Systems Enthusiast</p>
     <p>Bangalore | <a href="mailto:truchitha714@gmail.com">truchitha714@gmail.com</a></p>
-    <p><a href="https://www.linkedin.com/in/ruchitha-t-616a03321">LinkedIn</a></p>
+    <p><a href="https://www.linkedin.com/in/ruchitha-t-616a03321/">LinkedIn</a></p>
   </header>
 
   <section>
@@ -147,18 +148,18 @@
 
   <section>
     <h2>Skills & Certifications</h2>
-<ul>
-  <li>Analytical thinking, process optimization</li>
-  <li>Power BI, Tableau, Excel, PowerPoint</li>
-  <li>Scientific Writing (2024)</li>
-  <li>Languages: English, Hindi, Telugu, Kannada</li>
-</ul>
+    <ul>
+      <li>Analytical thinking, process optimization</li>
+      <li>Power BI, Tableau, Excel, PowerPoint</li>
+      <li>Scientific Writing (2024)</li>
+      <li>Languages: English, Hindi, Telugu, Kannada</li>
+    </ul>
 
-<h3>Machines Handled</h3>
-<ul>
-  <li>Babylog, Savina 300, Carescape R860, Evita v300</li>
-  <li>ResMed, Maquet, Fisher & Paykel AIRVO2 (HFNC)</li>
-</ul>
+    <h3>Machines Handled</h3>
+    <ul>
+      <li>Babylog, Savina 300, Carescape R860, Evita v300</li>
+      <li>ResMed, Maquet, Fisher & Paykel AIRVO2 (HFNC)</li>
+    </ul>
   </section>
 
   <section>
@@ -195,19 +196,25 @@
     });
 
     tsParticles.load("tsparticles", {
-      background: { color: "transparent" },
-      fullScreen: { enable: false },
+      background: {
+        color: { value: "transparent" }
+      },
       particles: {
         number: { value: 40 },
-        color: { value: ["#aad4ff", "#bae1ff"] },
-        size: { value: 3 },
+        size: { value: 2 },
+        color: { value: "#87cefa" },
         move: { enable: true, speed: 0.6 },
-        opacity: { value: 0.3 },
+        opacity: { value: 0.4 },
         shape: { type: "circle" }
       },
       interactivity: {
-        events: { onHover: { enable: true, mode: "repulse" } },
-        modes: { repulse: { distance: 50 } }
+        events: {
+          onHover: { enable: true, mode: "repulse" },
+          resize: true
+        },
+        modes: {
+          repulse: { distance: 70 }
+        }
       },
       detectRetina: true
     });
