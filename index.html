@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>T Ruchitha – Digital Resume</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet" />
-  <script src="https://unpkg.com/lottie-web@5.7.13/build/player/lottie.min.js"></script>
   <style>
     :root {
       --text-light: #222;
@@ -69,12 +68,6 @@
 
     body.dark header {
       background: var(--header-dark);
-    }
-
-    #lottie-animation {
-      width: 200px;
-      height: 200px;
-      margin: 1rem auto;
     }
 
     header h1 {
@@ -143,7 +136,6 @@
   <button class="toggle-btn" onclick="toggleDarkMode()">☀️</button>
 
   <header>
-    <div id="lottie-animation"></div>
     <h1>T Ruchitha</h1>
     <p>PGDM Student | Respiratory Care Therapist | Health Systems Enthusiast</p>
     <p>Bangalore | <a href="mailto:truchitha714@gmail.com">truchitha714@gmail.com</a></p>
@@ -219,14 +211,6 @@
     document.addEventListener("DOMContentLoaded", () => {
       const btn = document.querySelector(".toggle-btn");
       btn.textContent = document.body.classList.contains("dark") ? "🌙" : "☀️";
-
-      lottie.loadAnimation({
-        container: document.getElementById('lottie-animation'),
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: 'https://assets4.lottiefiles.com/packages/lf20_9cyyl8i4.json'
-      });
     });
 
     const observer = new IntersectionObserver((entries) => {
