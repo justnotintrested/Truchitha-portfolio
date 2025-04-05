@@ -1,4 +1,11 @@
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>T Ruchitha – Digital Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet" />
+  <style>
     :root {
       --text-light: #222;
       --text-dark: #eee;
@@ -152,3 +159,104 @@
       text-decoration: none;
     }
   </style>
+</head>
+<body>
+  <button class="toggle-btn" onclick="toggleDarkMode()">☀️</button>
+
+  <header>
+    <h1>T Ruchitha</h1>
+    <p>PGDM Student | Respiratory Care Therapist | Health Systems Enthusiast</p>
+    <p>Bangalore | <a href="mailto:truchitha714@gmail.com">truchitha714@gmail.com</a></p>
+    <p><a href="https://www.linkedin.com/in/ruchitha-t-616a03321/">LinkedIn</a></p>
+  </header>
+
+  <section>
+    <h2>About Me</h2>
+    <p>Enthusiastic professional passionate about streamlining healthcare operations and driving clinical efficiency. Currently pursuing PGDM at IIHMR, Bangalore.</p>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <ul>
+      <li><strong>PGDM – IIHMR, Bangalore</strong> (2024–2026)</li>
+      <li><strong>B.Sc. in Respiratory Care Therapy – Jayadeva Institute</strong> (2019–2024) – 78%</li>
+      <li><strong>12th Grade – JNV</strong> (2019) – 88.7%</li>
+      <li><strong>10th Grade – JNV</strong> (2017) – CGPA 9.6</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    <p><strong>Intern – Karnataka Health Systems Resource Centre (KHSRC), 2024</strong></p>
+    <ul>
+      <li>Field visits, data collection, and analysis for CHO impact study</li>
+    </ul>
+    <p><strong>Intern – Respiratory Care Therapist, Jayadeva Institute</strong></p>
+    <ul>
+      <li>Provided care in ICUs, documented progress, optimized clinical workflows</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Skills & Certifications</h2>
+    <ul>
+      <li>Analytical thinking, process optimization</li>
+      <li>Power BI, Tableau, Excel, PowerPoint</li>
+      <li>Scientific Writing (2024)</li>
+      <li>Languages: English, Hindi, Telugu, Kannada</li>
+    </ul>
+    <h3>Machines Handled</h3>
+    <ul>
+      <li><span class="tooltip">Babylog<span class="tooltiptext">Neonatal ventilator for premature infants</span></span></li>
+      <li><span class="tooltip">Savina 300<span class="tooltiptext">Compact ICU ventilator with turbine drive</span></span></li>
+      <li><span class="tooltip">Carescape R860<span class="tooltiptext">Advanced ventilator with touchscreen interface</span></span></li>
+      <li><span class="tooltip">Evita v300<span class="tooltiptext">High-end ventilator for critical care</span></span></li>
+      <li><span class="tooltip">ResMed<span class="tooltiptext">CPAP and BiPAP therapy devices</span></span></li>
+      <li><span class="tooltip">Maquet<span class="tooltiptext">ICU ventilators and anesthesia systems</span></span></li>
+      <li><span class="tooltip">Fisher & Paykel AIRVO2 (HFNC)<span class="tooltiptext">High-flow nasal cannula system</span></span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Activities</h2>
+    <ul>
+      <li>Member – Sports Committee & Management Club (IIHMR)</li>
+      <li>Participant – RESCARE 2022 & 2023 Conferences</li>
+    </ul>
+  </section>
+
+  <section class="download">
+    <a href="T%20RUCHITHA-IIHMR-903.pdf" download>Download My Resume (PDF)</a>
+  </section>
+
+  <footer>
+    &copy; 2025 T Ruchitha. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      const body = document.body;
+      const btn = document.querySelector(".toggle-btn");
+      body.classList.toggle("dark");
+      btn.textContent = body.classList.contains("dark") ? "🌙" : "☀️";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const btn = document.querySelector(".toggle-btn");
+      btn.textContent = document.body.classList.contains("dark") ? "🌙" : "☀️";
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    });
+
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
