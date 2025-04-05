@@ -19,7 +19,7 @@
       font-family: 'Roboto Mono', monospace;
       background: linear-gradient(-45deg, #e9f3fb, #d0e8ff, #f1f9ff, #ffffff);
       background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
+      animation: gradientBG 15s ease infinite, slowZoom 20s ease-in-out infinite;
       color: var(--text-light);
       transition: all 0.3s ease;
       overflow-x: hidden;
@@ -34,6 +34,11 @@
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
+    }
+
+    @keyframes slowZoom {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
     }
 
     .toggle-btn {
@@ -68,6 +73,13 @@
 
     body.dark header {
       background: var(--header-dark);
+    }
+
+    .wave-divider svg {
+      display: block;
+      width: 100%;
+      height: 50px;
+      margin: -1px 0;
     }
 
     header h1 {
@@ -146,6 +158,11 @@
     <h2>About Me</h2>
     <p>Enthusiastic professional passionate about streamlining healthcare operations and driving clinical efficiency. Currently pursuing PGDM at IIHMR, Bangalore.</p>
   </section>
+  <div class="wave-divider">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+      <path d="M0,50 C360,50 360,0 720,0 C1080,0 1080,50 1440,50 L1440,100 L0,100 Z" fill="#d0e8ff"/>
+    </svg>
+  </div>
 
   <section>
     <h2>Education</h2>
@@ -156,6 +173,11 @@
       <li><strong>10th Grade – JNV</strong> (2017) – CGPA 9.6</li>
     </ul>
   </section>
+  <div class="wave-divider">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+      <path d="M0,50 C360,50 360,0 720,0 C1080,0 1080,50 1440,50 L1440,100 L0,100 Z" fill="#d0e8ff"/>
+    </svg>
+  </div>
 
   <section>
     <h2>Experience</h2>
@@ -168,6 +190,11 @@
       <li>Provided care in ICUs, documented progress, optimized clinical workflows</li>
     </ul>
   </section>
+  <div class="wave-divider">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+      <path d="M0,50 C360,50 360,0 720,0 C1080,0 1080,50 1440,50 L1440,100 L0,100 Z" fill="#d0e8ff"/>
+    </svg>
+  </div>
 
   <section>
     <h2>Skills & Certifications</h2>
@@ -183,6 +210,11 @@
       <li>ResMed, Maquet, Fisher & Paykel AIRVO2 (HFNC)</li>
     </ul>
   </section>
+  <div class="wave-divider">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+      <path d="M0,50 C360,50 360,0 720,0 C1080,0 1080,50 1440,50 L1440,100 L0,100 Z" fill="#d0e8ff"/>
+    </svg>
+  </div>
 
   <section>
     <h2>Activities</h2>
